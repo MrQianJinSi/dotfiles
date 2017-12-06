@@ -4,7 +4,10 @@
 !.gitignore
 # 各类配置文件
 !.bashrc
-!.vimrc
 !.wgetrc
 # config目录
 !.config/
+# vim
+!.vim/
+!.vim/.vimrc
+!.vim/mysnippets/
