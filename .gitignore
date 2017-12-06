@@ -1,0 +1,10 @@
+# 忽略$HOME目录下的所有文件，但不忽略$HOME目录自身，注意不能用*代替
+/*
+# 要加入git的文件列表
+!.gitignore
+# 各类配置文件
+!.bashrc
+!.vimrc
+!.wgetrc
+# config目录
+!.config/
