@@ -141,47 +141,6 @@ export EDITOR=$VISUAL
 
 # set Hadoop run env
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-#
-#export HADOOP_HOME=/home/galois/hadoop-2.7.0
-#export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
-#
-#export MAHOUT_HOME=/home/galois/mahout
-#export MAHOUT_LOCAL=true #for running standalone on dev machine,
-# unset MAHOUT_LOCAL for running on a cluster
 
-# set linker's config
-#export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-
-#set VSFM
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/galois/Works/ComputerVision/vsfm/bin
-#
-##set Woke Path
-#work=/home/galois/Works/computer_vision
-#
-## Android Dev
-#export PATH="$PATH:/opt/android-studio/bin" # Add Android Studio Startup cmd
-#export PATH="$PATH:/opt/android-sdk/platform-tools" # Add adb
-#export PATH="$PATH:/opt/android-sdk/ndk-bundle" # Add ndk-build
-#export PATH="$PATH:/opt/android-sdk/tools" # Add android
-#export ANDROID_NDK=/opt/android-sdk/ndk-bundle
-##export PYTHONHOME=/usr/
-#NDKBINUTIL=/opt/android-sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/
-#
-## set polipo proxy
-#alias hp="http_proxy=http://127.0.0.1:8123"
-#alias hps="https_proxy=https://127.0.0.1:8123"
-
-# set color 
-#set t_Co=256
-
-# set PYTHONPATH
-#export PYTHONPATH=${PYTHONPATH}:${HOME}/GitRepo/tensorflow
-# set matlab
-#alias matlab="/opt/MATLAB/R2015b/bin/matlab"
-
-# set EDITOR for ranger
-#export EDITOR=vim
-#export PYTHONPATH=/home/galois/GitRepo/mxnet/python:
-#export PYTHONPATH=/home/galois/GitRepo/mxnet/python:/home/galois/GitRepo/mxnet/python:
 # manage dotfiles
 alias dotm='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
