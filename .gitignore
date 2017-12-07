@@ -7,7 +7,12 @@
 !.wgetrc
 # config目录
 !.config/
+.config/*
+!.config/i3/
 # vim
 !.vim/
+.vim/*
 !.vim/.vimrc
 !.vim/mysnippets/
+# git config
+!.git_conf/
