@@ -270,7 +270,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " CtrlP
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|[dD]ata|.*\_py[23])$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|[dD]ata|.*\_py[23]|node_modules)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 
