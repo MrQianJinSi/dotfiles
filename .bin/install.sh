@@ -18,3 +18,23 @@ ranger_related = ('caca-utils',  # img2txt preview images
 vim_style = ('sxiv', # image brownser
              'zathura' # pdfviewer
 )
+
+# i3 related
+i3_related = ('feh', # wallpaper
+              'xrandr', # command version moniter manager
+              'arandr', # gui moniter manager
+              'xprop', # get program class name
+              'xev', # get key name
+              'i3blocks', # i3 status bar
+              'scrot', # screenshoot
+              'pactrl', # system volume control
+              'playerctl', # switch music
+              'paucontrol', # system voluem setup
+              'blueman-applet', # bluetooth applet
+              'nm-applet', # network manager applet
+              'i3-lock', # screen lock
+              'xautolock', # auto screenlock
+)
+
+# system themes
+# lxappreance
