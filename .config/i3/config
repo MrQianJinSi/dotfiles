@@ -140,15 +140,15 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Terminals"
-set $workspace2 "2: Chrome"
-set $workspace3 "3: Vim"
-set $workspace4 "4: Files"
-set $workspace5 "5: "
-set $workspace6 "6: "
-set $workspace7 "7: "
-set $workspace8 "8: "
-set $workspace9 "9: "
+set $workspace1 "1: terms"
+set $workspace2 "2: dev"
+set $workspace3 "3: web"
+set $workspace4 "4: docs"
+set $workspace5 "5: files"
+set $workspace6 "6: misc"
+set $workspace7 "7: todo"
+set $workspace8 "8: read"
+set $workspace9 "9: chat"
 set $workspace10 "10: Music"
 
 # switch to workspace
@@ -193,7 +193,7 @@ bindsym $mod+grave move container to output down
 # projection
 bindsym $mod+p exec "xrandr --output $extern --mode 1280x720 --same-as $builtin"
 # work station
-bindsym $mod+bracketleft exec "xrandr --output $extern --auto --above $builtin"
+bindsym $mod+bracketleft exec "xrandr --output $extern --mode 1920x1080 --above $builtin"
 # trun off extern screen
 bindsym $mod+bracketright exec "xrandr --output $extern --off"
 
@@ -201,8 +201,14 @@ bindsym $mod+bracketright exec "xrandr --output $extern --off"
 #for_window [class="Update-manager"] floating enable
 
 #assign [class="Gnome-terminal"] $workspace1
-assign [class="Google-chrome"] $workspace2
-assign [class="Gvim"] $workspace3
+assign [class="Gvim"] $workspace2
+assign [class="Google-chrome"] $workspace3
+# WPS Writer
+assign [class="wps"] $workspace4
+# WPS Presentation
+assign [class="wpp"] $workspace6
+# WPS Spreadsheets
+assign [class="et"] $workspace6
 assign [class="netease-cloud-music"] $workspace10
 
 # window border
@@ -285,6 +291,8 @@ exec ss-local -c $HOME/.secrets/shadowsocks.json
 # exec_always compton
 # set wallpaper
 exec_always feh --bg-scale $wallpaper
+# seafile client
+exec  --no-startup-id seafile-applet
 # network manager
 exec  --no-startup-id nm-applet
 # bluetooth manager
