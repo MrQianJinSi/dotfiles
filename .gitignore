@@ -10,6 +10,7 @@
 .config/*
 !.config/i3/
 !.config/ranger/
+!.config/nvim/
 # vim
 !.vim/
 .vim/*
