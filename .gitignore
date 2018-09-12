@@ -7,6 +7,7 @@
 !.wgetrc
 !.gemrc
 !.npmrc
+!.gtkrc-2.0
 # config目录
 !.config/
 .config/*
@@ -14,6 +15,7 @@
 !.config/ranger/
 !.config/nvim/
 !.config/pip/
+!.config/gtk-3.0/
 # fonts
 !.local
 .local/*
