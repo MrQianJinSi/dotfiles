@@ -5,12 +5,21 @@
 # 各类配置文件
 !.bashrc
 !.wgetrc
+!.gemrc
+!.npmrc
 # config目录
 !.config/
 .config/*
 !.config/i3/
 !.config/ranger/
 !.config/nvim/
+!.config/pip/
+# fonts
+!.local
+.local/*
+!.local/share
+.local/share/*
+!.local/share/fonts/
 # vim
 !.vim/
 .vim/*
