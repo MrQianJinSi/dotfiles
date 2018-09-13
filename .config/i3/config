@@ -204,11 +204,12 @@ bindsym $mod+bracketright exec "xrandr --output $extern --off"
 assign [class="Gvim"] $workspace2
 assign [class="Google-chrome"] $workspace3
 # WPS Writer
-assign [class="wps"] $workspace4
+assign [class="Wps"] $workspace4
 # WPS Presentation
-assign [class="wpp"] $workspace6
+assign [class="Wpp"] $workspace6
 # WPS Spreadsheets
-assign [class="et"] $workspace6
+assign [class="Et"] $workspace6
+# netease cloud music
 assign [class="netease-cloud-music"] $workspace10
 
 # window border
@@ -299,7 +300,7 @@ exec  --no-startup-id blueman-applet
 exec --no-startup-id i3-msg "exec google-chrome-stable"
 # terminal
 exec --no-startup-id i3-msg "exec i3-sensible-terminal"
-# 网易云音乐
+# netease cloud music
 exec --no-startup-id i3-msg "exec netease-cloud-music"
 # auto lock screen
 exec xautolock -time 5 -locker "$HOME/.bin/scripts/fuzzy_lock.sh $HOME/.config/i3/lock.png" -notify 30 -notifier "notify-send -u critical -t 10000 'LOCKING screen in 30 seconds'" -detectsleep
