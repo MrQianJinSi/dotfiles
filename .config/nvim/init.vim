@@ -1,56 +1,54 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tomasr/molokai'
-Plugin 'sickill/vim-monokai'
+Plug 'tomasr/molokai'
+Plug 'sickill/vim-monokai'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'Yggdroot/indentLine'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-surround'
+Plug 'Yggdroot/indentLine'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
-Plugin 'valloric/youcompleteme' "should be compiled to install
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+Plug 'chrisbra/NrrwRgn'
 
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Plugin 'rdnetto/ycm-generator'
-" Plugin 'jeaye/color_coded' "should be compiled to install
+" deoplete plugins
+" C Family
+Plug 'zchee/deoplete-clang'
+" python
+" deps: pip install jedi
+Plug 'zchee/deoplete-jedi', { 'do': 'pip install jedi' }
+" javascript
+" deps: npm install -g tern
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" flow type
+" deps: npm install -g flow-bin
+Plug 'wokalski/autocomplete-flow', { 'do': 'npm install -g flow-bin' } 
+" For func argument completion
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
-"Syntax check for python, Ycm only check C-family language
-Plugin 'w0rp/ale'
-"Plugin 'vim-syntastic/syntastic'
+" javascript syntax highlight
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'leshill/vim-json'
 
-" python coding style check
-" Plugin 'nvie/vim-flake8'
-"
-Plugin 'ctrlpvim/ctrlp.vim'
-"auto save
-Plugin '907th/vim-auto-save'
-
+" linters
+" deps : npm install -g eslint
+Plug 'w0rp/ale'
 
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -65,10 +63,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " VIM SELF SETTINGS 
-" tab colors
-":hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-":hi TabLine ctermfg=Blue ctermbg=Yellow
-":hi TabLineSel ctermfg=Red ctermbg=Yellow
 " show line numbers
 set number
 set numberwidth=5
@@ -102,32 +96,10 @@ set splitbelow
 set splitright
 
 " Quicker window movement
-"nnoremap <C-j> <C-w>j 
-"nnoremap <C-k> <C-w>k 
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-l> <C-w>l
-
-" jump between buffers
-" nnoremap <silent> [b :bprevious<CR>
-" nnoremap <silent> ]b :bnext<CR>
-" nnoremap <silent> [B :bfirst<CR>
-" nnoremap <silent> ]B :blast<CR>
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-set hidden
-
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nnoremap <leader>bn :enew<cr>
-
-" Move between buffers
-nnoremap <leader>h :bprevious<CR>
-nnoremap <leader>l :bnext<CR>
-nnoremap <leader>H :bfirst<CR>
-nnoremap <leader>L :blast<CR>
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nnoremap <leader>q :bp <BAR> bd #<CR>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " convert tab to spaces
 " by default, the indent is 2 spaces
@@ -138,8 +110,8 @@ set softtabstop=2 " delete how many spaces when stroke backspace
 " set tab width for different filetype
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype python setlocal ts=4 sts=4 sw=4
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype python setlocal ts=2 sts=2 sw=2
+"autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 " don't convert tab when edit Makefile
 autocmd FileType make setlocal noexpandtab
 
@@ -147,14 +119,6 @@ autocmd FileType make setlocal noexpandtab
 autocmd BufRead,BufNewFile {*.markdown,*.mdown,*.mkdn,*.md,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text} set filetype=markdown
 autocmd FileType markdown setlocal syntax=off
 
-" stop hide quote in json
-set conceallevel=0
-
-" diable vim auto insert line break
-" this enables "visual" wrapping
-set wrap
-" this turns off physical line wrapping (ie: automatic insertion of newlines)
-set textwidth=0 wrapmargin=0
 
 " PLUGIN SETTINGS
 " ColorScheme
@@ -175,13 +139,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Open a NERDTree
-" nmap <F5> :NERDTreeToggle<CR>
-" Sibling keybinds conflict with vim split
-let g:NERDTreeMapJumpPrevSibling = '<C-p>'
-let g:NERDTreeMapJumpNextSibling = '<C-n>'
-
-" NERD Tree tabs
-nmap <F5> :NERDTreeTabsToggle<CR>
+nmap <F5> :NERDTreeToggle<CR>
 
 " Tagbar
 let g:tagbar_width=35
@@ -192,47 +150,22 @@ nmap <F6> :TagbarToggle<CR>
 let g:indentLine_char='┆'
 let g:indentLine_enabled = 2
 set list lcs=tab:\|\ 
-
 " airline
 set laststatus=2 "Always display the status line
-" airline handle ale
-let g:airline#extensions#ale#enabled = 1
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
 
-" YouCompleteMe
-" set fallback ycm config
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-" open location list
-let g:ycm_always_populate_location_list = 1
-" Don't ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-" set warning sign
-let g:ycm_warning_symbol = '**'
-" auto close preview window after completion
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" auto close preview window when leaves insert mode
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" auto completion for language keywords
-let g:ycm_seed_identifiers_with_syntax = 1
-" add python3 completion
-let g:ycm_python_binary_path = '/usr/bin/python3'
-" set server interpreter
-" let g:ycm_server_python_interpreter = ''
-" auto insert completion
-" let g:ycm_key_invoke_completion = ''
+" vim-javascript
+" Enables syntax highlighting for Flow.
+let g:javascript_plugin_flow = 1
 
-"let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-"let g:ycm_server_use_vim_stdout = 0
-" DEBUG
-"let g:ycm_keep_logfiles = 1
-"let g:ycm_log_level = 'debug'
-" Set keyboard shortcut
-nmap <leader>g :YcmCompleter GoTo<CR>
-nmap <F2> :YcmCompleter GetDoc<CR>
-nmap <F8> :YcmDiags<CR>
+" vim-jsx
+" Enbale jsx highlighting for both js and jsx
+let g:jsx_ext_required = 0
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" neosnippet
+let g:neosnippet#enable_completed_snippet = 1
+
 
 " UltiSnips  
 " fix Ycm conflicts with ultisnips
