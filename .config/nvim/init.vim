@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 " Specify a directory for plugins
@@ -33,10 +34,6 @@ filetype plugin indent on    " required
 
 
 " VIM SELF SETTINGS 
-" tab colors
-":hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-":hi TabLine ctermfg=Blue ctermbg=Yellow
-":hi TabLineSel ctermfg=Red ctermbg=Yellow
 " show line numbers
 set number
 set numberwidth=5
@@ -70,32 +67,10 @@ set splitbelow
 set splitright
 
 " Quicker window movement
-"nnoremap <C-j> <C-w>j 
-"nnoremap <C-k> <C-w>k 
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-l> <C-w>l
-
-" jump between buffers
-" nnoremap <silent> [b :bprevious<CR>
-" nnoremap <silent> ]b :bnext<CR>
-" nnoremap <silent> [B :bfirst<CR>
-" nnoremap <silent> ]B :blast<CR>
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-set hidden
-
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nnoremap <leader>bn :enew<cr>
-
-" Move between buffers
-nnoremap <leader>h :bprevious<CR>
-nnoremap <leader>l :bnext<CR>
-nnoremap <leader>H :bfirst<CR>
-nnoremap <leader>L :blast<CR>
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nnoremap <leader>q :bp <BAR> bd #<CR>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " convert tab to spaces
 " by default, the indent is 2 spaces
@@ -106,8 +81,8 @@ set softtabstop=2 " delete how many spaces when stroke backspace
 " set tab width for different filetype
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype python setlocal ts=4 sts=4 sw=4
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype python setlocal ts=2 sts=2 sw=2
+"autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 " don't convert tab when edit Makefile
 autocmd FileType make setlocal noexpandtab
 
@@ -115,14 +90,6 @@ autocmd FileType make setlocal noexpandtab
 autocmd BufRead,BufNewFile {*.markdown,*.mdown,*.mkdn,*.md,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text} set filetype=markdown
 autocmd FileType markdown setlocal syntax=off
 
-" stop hide quote in json
-set conceallevel=0
-
-" diable vim auto insert line break
-" this enables "visual" wrapping
-set wrap
-" this turns off physical line wrapping (ie: automatic insertion of newlines)
-set textwidth=0 wrapmargin=0
 
 " PLUGIN SETTINGS
 " ColorScheme
@@ -274,14 +241,3 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" ale
-let g:ale_linters = {
-      \ 'sh': ['shellcheck'],
-      \ 'json': ['jsonlint'],
-      \ 'python': ['pylint'],
-      \ 'javascript': ['eslint'],
-      \}
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
