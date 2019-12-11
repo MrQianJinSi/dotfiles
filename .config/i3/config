@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $Alt Mod1
 
 set $base00 #101218
 set $base01 #1f222d
@@ -31,7 +32,9 @@ set $base0F #d06060
 
 # monitor alias
 set $builtin eDP1
-set $extern HDMI1
+set $top HDMI1
+# set $top DP2
+set $horizonal DP2
 
 set $wallpaper $HOME/.config/i3/star_ships.jpg
 
@@ -125,7 +128,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $od+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -183,19 +186,36 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Toggle between both monitors 
 # (focus output left wraps from the leftmost to the rightmost output)
-bindsym $mod+Tab focus output down
+bindsym $mod+Tab focus output left
+bindsym $mod+q focus output down
+# move workspace
+# move workspace left
+bindsym $mod+$Alt+h move workspace to output left
+# move workspace right
+bindsym $mod+$Alt+l move workspace to output right
 # move workspace down
-bindsym $mod+q move workspace to output down
+bindsym $mod+$Alt+j move workspace to output down
+# move workspace up
+bindsym $mod+$Alt+k move workspace to output up
+# move workspace left 
+# bindsym $mod+minus move workspace to output left
+# move workspace down
+# bindsym $mod+equal move workspace to output down
 # move container down
-bindsym $mod+grave move container to output down
+# bindsym $mod+grave move container to output down
 
 # manage moniters
-# projection
-bindsym $mod+p exec "xrandr --output $extern --mode 1280x720 --same-as $builtin"
-# work station
-bindsym $mod+bracketleft exec "xrandr --output $extern --mode 1920x1080 --above $builtin"
-# trun off extern screen
-bindsym $mod+bracketright exec "xrandr --output $extern --off"
+# projection mode
+bindsym $mod+p exec "xrandr --output $top --mode 1280x720 --same-as $builtin"
+#bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
+# vertical dual moniter work station 
+bindsym $mod+bracketleft exec "xrandr --output $top --mode 1920x1080 --above $builtin"
+# horizonal dual moniter work station 
+bindsym $mod+bracketright exec "xrandr --output $horizonal --mode 1920x1080 --right-of $builtin"
+# triple mointer work station
+#bindsym $mod+quotedbl exec "xrandr --output $builtin --mode 1920x1080 --pos 1080x1200 --rotate normal --output $top --mode 1920x1200 --pos 1080x0 --rotate normal --output DP2 --mode 1920x1080 --pos 0x0 --rotate left"
+# trun off outer screen
+bindsym $mod+backslash exec "xrandr --output $top --off --output $horizonal --off"
 
 # Floating Windows
 #for_window [class="Update-manager"] floating enable
@@ -226,6 +246,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+x exec "$HOME/.bin/scripts/fuzzy_lock.sh $HOME/.config/i3/lock.png"
 # screenshot
 bindsym Print exec "mkdir -p $HOME/Pictures/Screenshots && scrot -q 100 -e 'mv $f ~/Pictures/Screenshots/'"
+
+# flame shot
+bindsym $mod+Print exec "flameshot gui"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -284,7 +307,7 @@ bar {
 # auto start program
 
 # shadowsocks
-exec ss-local -c $HOME/.secrets/shadowsocks.json
+# exec ss-local -c $HOME/.secrets/shadowsocks_ca.json
 # exec ss-local -s server_ip -p server_port -l local_port -k "password" -m aes-256-cfb
 # make transparent rofi
 # exec_always compton
