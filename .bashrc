@@ -130,8 +130,17 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\W' adds the name of the current directory
 export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
 
-# using most as print man page
-export PAGER=most
+# using less as print man page
+export PAGER=less
+# Set colors for less. Borrowed from https://wiki.archlinux.org/index.php/Color_output_in_console#less .
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
+# export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
+export LESS_TERMCAP_md=$'\E[1;31m'     # begin blink
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 # set default editor for Git and other programs
 export VISUAL=vim
@@ -142,5 +151,19 @@ export EDITOR=$VISUAL
 # set Hadoop run env
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
+# pyenv
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# pipenv
+eval "$(pipenv --completion)"
+
 # manage dotfiles
 alias dotm='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+
+# autojump
+[[ -s /home/wangshuang/.autojump/etc/profile.d/autojump.sh ]] && source /home/wangshuang/.autojump/etc/profile.d/autojump.sh
+
+alias hp='export all_proxy=http://127.0.0.1:1235'
+alias unhp='unset all_proxy'
