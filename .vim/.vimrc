@@ -21,6 +21,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'rhysd/git-messenger.vim'
 
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
@@ -46,9 +47,6 @@ Plugin 'w0rp/ale'
 Plugin 'ctrlpvim/ctrlp.vim'
 "auto save
 Plugin '907th/vim-auto-save'
-
-
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -246,8 +244,8 @@ let g:ultisnips_python_style = 'sphinx'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 
 " vim-snippts
-let g:snips_email = "wangshuang@wangshuang.co"
-let g:snips_author = "wangshuang"
+let g:snips_email = "mrqianjinsi@gmail.com"
+let g:snips_author = "mrqianjinsi"
 let g:snips_github = "https://github.com/mrqianjinsi"
 
 " ale
@@ -270,7 +268,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " CtrlP
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|[dD]ata|.*\_py[23]|node_modules)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|[dD]ata|.*\_py[23]|_py[23]\d?|node_modules)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 
@@ -292,3 +290,13 @@ nmap <leader>bs :CtrlPMRU<cr>
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "CursorHoldI"]
+
+" git-messenger
+function! s:setup_git_messenger_popup() abort
+    " Your favorite configuration here
+
+    " For example, set go back/forward history to <C-o>/<C-i>
+    nmap <buffer><C-o> o
+    nmap <buffer><C-i> O
+endfunction
+autocmd FileType gitmessengerpopup call <SID>s:setup_git_messenger_popup()
