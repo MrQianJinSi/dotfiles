@@ -56,7 +56,8 @@ case "$extension" in
         try unrar -p- lt "$path" && { dump | trim; exit 0; } || exit 1;;
     # PDF documents:
     pdf)
-        try pdftotext -l 10 -nopgbrk -q "$path" - && \
+        # try pdftotext -l 10 -nopgbrk -q "$path" - && \
+        try pdf2txt -m 3 "$path" && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     # .doc documents:
     doc)
