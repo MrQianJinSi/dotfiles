@@ -15,6 +15,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 " config ternjs working for deoplete
 " Plug 'carlitux/deoplete-ternjs'
 
+" general
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+
+
+" async code completion by language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
@@ -66,11 +73,28 @@ set fileencodings=utf-8,bg18030,gbk,big5
 set splitbelow
 set splitright
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" Quicker movement between buffers
+nnoremap <silent> bh :bprevious<CR>
+nnoremap <silent> bl :bnext<CR>
+nnoremap <silent> bH :bfirst<CR>
+nnoremap <silent> bL :blast<CR>
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+"
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nnoremap bn :enew<cr>
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nnoremap bq :bp <BAR> bd #<CR>
+
+
+" Quicker movement between windows
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
 
 " convert tab to spaces
 " by default, the indent is 2 spaces
@@ -92,27 +116,49 @@ autocmd FileType markdown setlocal syntax=off
 
 
 " PLUGIN SETTINGS
-" ColorScheme
+"=====ColorScheme
 "set t_Co=256 " should be set in .bashrc
 syntax enable
 colorscheme monokai
 "let g:molokai_original = 1 " use molokai backgound color
 
-""""""""""""""""""""""""""""""""""""
-" python path for neovim
-" let g:python_host_prog = '/home/wangshuang/.pyenv/shims/python2'
-" let g:python3_host_prog = '/home/wangshuang/.pyenv/shims/python3'
-" deoplete
-set completeopt+=longest,menuone,preview
-let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_delay = 0
-" preview function docs
-let g:deoplete#sources#ternjs#docs = 1
-" Use TAB for selecting candidates
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"=====nerdtree
+" NERD tree
+let NERDChristmasTree=0
+let NERDTreeWinSize=35
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+let NERDTreeShowBookmarks=1
+let NERDTreeWinPos="left"
+" Automatically open a NERDTree if no files where specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Automatically open a NERDTree if opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
+" Automatically close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Open a NERDTree
+nmap <F5> :NERDTreeToggle<CR>
+
+"=====nerdtree git plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "M",
+    \ "Staged"    : "S",
+    \ "Untracked" : "?",
+    \ "Renamed"   : "R",
+    \ "Unmerged"  : "U",
+    \ "Deleted"   : "D",
+    \ "Dirty"     : "M",
+    \ "Clean"     : "√",
+    \ 'Ignored'   : '!',
+    \ "Unknown"   : "?"
+    \ }
 
 
-" coc
+
+"=====coc
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -241,3 +287,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"==== airline
+" airline
+set laststatus=2 "Always display the status line
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show path and filename
+let g:airline#extensions#tabline#formatter = 'default'
+
