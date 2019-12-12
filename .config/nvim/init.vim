@@ -16,9 +16,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'carlitux/deoplete-ternjs'
 
 " general
+" File Explorer
 Plug 'scrooloose/nerdtree'
+" Display sign along with filename
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" custome status line
 Plug 'vim-airline/vim-airline'
+" display sign along with line number
+Plug 'airblade/vim-gitgutter'
+" show git message
+Plug 'rhysd/git-messenger.vim'
 
 
 " async code completion by language server
@@ -69,25 +76,34 @@ set fileencodings=utf-8,bg18030,gbk,big5
 "nmap <leader>p "+p
 "nmap <leader>y "+y
 
+" Always display the status line
+set laststatus=2
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
 
+" buffers setting
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
 " Quicker movement between buffers
 nnoremap <silent> bh :bprevious<CR>
 nnoremap <silent> bl :bnext<CR>
 nnoremap <silent> bH :bfirst<CR>
 nnoremap <silent> bL :blast<CR>
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-set hidden
-"
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
 nnoremap bn :enew<cr>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nnoremap bq :bp <BAR> bd #<CR>
+" type Ngb to buffer number N
+let c = 1
+while c <= 99
+  execute "nnoremap " . c . "gb :" . c . "b\<CR>"
+  let c += 1
+endwhile
 
 
 " Quicker movement between windows
@@ -289,10 +305,12 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 "==== airline
-" airline
-set laststatus=2 "Always display the status line
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
-" Show path and filename
+" Show collapsed directories and filename
 let g:airline#extensions#tabline#formatter = 'default'
+" Show buffer number in title
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+
 
