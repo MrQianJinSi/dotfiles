@@ -70,8 +70,15 @@
             "preload": {
               "enabled": true
             },
+            "pylint": {
+              "enabled": true,
+              "args": [
+                "--rcfile",
+                "~/.config/pylintrc"
+              ]
+            },
             "pycodestyle": {
-              "enabled": true
+              "enabled": false
             },
             "pydocstyle": {
               "enabled": false,
@@ -79,7 +86,7 @@
               "matchDir": "[^\\.].*"
             },
             "pyflakes": {
-              "enabled": true
+              "enabled": false
             },
             "rope_completion": {
               "enabled": true
