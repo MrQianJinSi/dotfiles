@@ -16,6 +16,7 @@
 !.config/nvim/
 !.config/pip/
 !.config/gtk-3.0/
+!.config/pylintrc
 # fonts
 !.local
 .local/*

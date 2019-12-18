@@ -18,14 +18,28 @@ call plug#begin('~/.local/share/nvim/plugged')
 " general
 " File Explorer
 Plug 'scrooloose/nerdtree'
-" Display sign along with filename
+" Display git sign along with filename
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " custome status line
 Plug 'vim-airline/vim-airline'
-" display sign along with line number
+" display igit sign along with line number
 Plug 'airblade/vim-gitgutter'
 " show git message
 Plug 'rhysd/git-messenger.vim'
+" use git in vim
+Plug 'tpope/vim-fugitive'
+
+" custom start screen
+Plug 'mhinz/vim-startify'
+
+" Fuzzy search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+
+" show icons along file
+" must install nerdfonts: https://www.nerdfonts.com/font-downloads
+" Plug 'ryanoasis/vim-devicons'
 
 
 " async code completion by language server
@@ -146,9 +160,6 @@ let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos="left"
-" Automatically open a NERDTree if no files where specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Automatically open a NERDTree if opening a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
@@ -162,7 +173,7 @@ nmap <F5> :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "S",
-    \ "Untracked" : "?",
+    \ "Untracked" : "N",
     \ "Renamed"   : "R",
     \ "Unmerged"  : "U",
     \ "Deleted"   : "D",
