@@ -167,3 +167,5 @@ alias dotm='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias hp='export all_proxy=http://127.0.0.1:1235'
 alias unhp='unset all_proxy'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
