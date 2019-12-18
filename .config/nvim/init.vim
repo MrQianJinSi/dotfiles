@@ -323,5 +323,20 @@ let g:airline#extensions#tabline#formatter = 'default'
 " Show buffer number in title
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
+" star
+" Startify: {{{
+let g:starship= [
+      \ "                   .      *                .       ",
+      \ "     __ _o|                        .               ",
+      \ "    |  /__|===--        .             +            ",
+      \ "    [__|______~~--._                      .        ",
+      \ "   |\  `---.__:====]-----...,,_____               *",
+      \ "   |[>-----|_______<----------_____;::===--        ",
+      \ "   |/_____.....-----'''~~~~~~~                  .  ",
+      \ "              .                      All Ahead Full",
+      \ "",
+      \]
+let g:startify_custom_header = g:starship
+"" }}}
 
 
