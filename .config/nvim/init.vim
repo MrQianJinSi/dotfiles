@@ -33,9 +33,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 
 " Fuzzy search
+" prerequisite: https://github.com/junegunn/fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Automatic run ctags
+" prerequisite: https://github.com/universal-ctags/ctags
+Plug 'ludovicchabant/vim-gutentags'
 
 " show icons along file
 " must install nerdfonts: https://www.nerdfonts.com/font-downloads
@@ -144,6 +148,10 @@ autocmd FileType make setlocal noexpandtab
 autocmd BufRead,BufNewFile {*.markdown,*.mdown,*.mkdn,*.md,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text} set filetype=markdown
 autocmd FileType markdown setlocal syntax=off
 
+" set tags path
+" search current file directory firstly
+" search vim :pwd directory secondly
+set tags=./.tags;,.tags
 
 " PLUGIN SETTINGS
 "=====ColorScheme
@@ -315,15 +323,15 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-"==== airline
+" Airline: {{{
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show collapsed directories and filename
 let g:airline#extensions#tabline#formatter = 'default'
 " Show buffer number in title
 let g:airline#extensions#tabline#buffer_nr_show = 1
+"" }}}
 
-" star
 " Startify: {{{
 let g:starship= [
       \ "                   .      *                .       ",
@@ -339,4 +347,24 @@ let g:starship= [
 let g:startify_custom_header = g:starship
 "" }}}
 
+" vim-gutentags: {{{
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+"" }}}
