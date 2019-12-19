@@ -1,20 +1,13 @@
 set nocompatible              " be iMproved, required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 
-filetype off                  " required
-
+" Plugins {{{
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
-
-" async code completion framework
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" ternjs for javascript auto completion
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-" config ternjs working for deoplete
-" Plug 'carlitux/deoplete-ternjs'
-
 " general
 " File Explorer
 Plug 'scrooloose/nerdtree'
@@ -45,10 +38,8 @@ Plug 'ludovicchabant/vim-gutentags'
 " must install nerdfonts: https://www.nerdfonts.com/font-downloads
 " Plug 'ryanoasis/vim-devicons'
 
-
 " async code completion by language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
 " color schemes
 Plug 'flazz/vim-colorschemes'
@@ -59,13 +50,9 @@ Plug 'sickill/vim-monokai'
 
 " Initialize plugin system
 call plug#end()
+" }}}
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-
-
-" VIM SELF SETTINGS 
+" vim settings {{{
 " show line numbers
 set number
 set numberwidth=5
@@ -123,14 +110,13 @@ while c <= 99
   let c += 1
 endwhile
 
-
 " Quicker movement between windows
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
 
-" convert tab to spaces
+" convert TAB to Spaces
 " by default, the indent is 2 spaces
 set shiftwidth=2 " this controlls how many spaces will be used with autoindent
 set expandtab   " make Vim to insert with spaces instead of tabs
@@ -153,15 +139,15 @@ autocmd FileType markdown setlocal syntax=off
 " search vim :pwd directory secondly
 set tags=./.tags;,.tags
 
-" PLUGIN SETTINGS
-"=====ColorScheme
+" colorscheme
 "set t_Co=256 " should be set in .bashrc
 syntax enable
 colorscheme monokai
 "let g:molokai_original = 1 " use molokai backgound color
+" }}}
 
-"=====nerdtree
-" NERD tree
+" Plugin Settings {{{
+" NERD tree {{{
 let NERDChristmasTree=0
 let NERDTreeWinSize=35
 let NERDTreeChDirMode=2
@@ -173,11 +159,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
 " Automatically close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " Open a NERDTree
 nmap <F5> :NERDTreeToggle<CR>
+" }}}
 
-"=====nerdtree git plugin
+" NERD tree git plugin {{{
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "S",
@@ -190,10 +176,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '!',
     \ "Unknown"   : "?"
     \ }
+" }}}
 
-
-
-"=====coc
+" COC {{{
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -322,6 +307,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" }}}
 
 " Airline: {{{
 " Enable the list of buffers
@@ -330,7 +316,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 " Show buffer number in title
 let g:airline#extensions#tabline#buffer_nr_show = 1
-"" }}}
+" }}}
 
 " Startify: {{{
 let g:starship= [
@@ -345,7 +331,7 @@ let g:starship= [
       \ "",
       \]
 let g:startify_custom_header = g:starship
-"" }}}
+" }}}
 
 " vim-gutentags: {{{
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
@@ -370,4 +356,5 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
 endif
-"" }}}
+" }}}
+" }}}
