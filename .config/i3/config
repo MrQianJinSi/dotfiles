@@ -186,10 +186,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Toggle between both monitors 
 # (focus output left wraps from the leftmost to the rightmost output)
-# < sign
-bindsym $mod+less focus output left
-# > sign
-bindsym $mod+greater focus output down
+bindsym $mod+Tab focus output up
+bindsym $mod+q focus output right
 # bindsym $mod+Tab+k focus output up
 # bindsym $mod+Tab+l focus output right
 
