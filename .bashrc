@@ -161,11 +161,15 @@ eval "$(pipenv --completion)"
 # manage dotfiles
 alias dotm='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-
 # autojump
 [[ -s /home/wangshuang/.autojump/etc/profile.d/autojump.sh ]] && source /home/wangshuang/.autojump/etc/profile.d/autojump.sh
 
+# setup proxy environment
 alias hp='export all_proxy=http://127.0.0.1:1235'
 alias unhp='unset all_proxy'
 
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# shortcuts
+alias v=nvim
