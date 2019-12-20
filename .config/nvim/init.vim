@@ -39,7 +39,9 @@ Plug 'ludovicchabant/vim-gutentags'
 " Plug 'ryanoasis/vim-devicons'
 
 " async code completion by language server
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release',
+     \ 'do': 'pip install python-language-server
+     \ && yarn global add vim-language-server'}
 
 " color schemes
 Plug 'flazz/vim-colorschemes'
@@ -52,7 +54,11 @@ Plug 'sickill/vim-monokai'
 call plug#end()
 " }}}
 
-" vim settings {{{
+" Vim Settings {{{
+" fold
+set foldmethod=manual
+autocmd Filetype vim set foldmethod=marker
+" set foldlevel=0
 " show line numbers
 set number
 set numberwidth=5
