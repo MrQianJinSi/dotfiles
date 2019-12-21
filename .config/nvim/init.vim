@@ -57,7 +57,7 @@ call plug#end()
 " Vim Settings {{{
 " fold
 set foldmethod=manual
-autocmd Filetype vim set foldmethod=marker
+autocmd Filetype vim setlocal foldmethod=marker
 " set foldlevel=0
 " show line numbers
 set number
@@ -90,11 +90,7 @@ set fileencodings=utf-8,bg18030,gbk,big5
 " Always display the status line
 set laststatus=2
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" buffers setting
+" Buffer Settings {{{
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
@@ -115,12 +111,29 @@ while c <= 99
   execute "nnoremap " . c . "gb :" . c . "b\<CR>"
   let c += 1
 endwhile
+" }}}
+
+" Windows(Split) Settings {{{
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Split window and keep focus in original window
+nnoremap ss :split<Return><C-w>w
+nnoremap sv :vsplit<Return><C-w>w
 
 " Quicker movement between windows
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
+
+" Resize window
+nnoremap s<left> <C-w><
+nnoremap s<right> <C-w>>
+nnoremap s<up> <C-w>+
+nnoremap s<down> <C-w>-
+" }}}
 
 " convert TAB to Spaces
 " by default, the indent is 2 spaces
