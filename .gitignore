@@ -8,6 +8,7 @@
 !.gemrc
 !.npmrc
 !.gtkrc-2.0
+!.tmux.conf
 # config目录
 !.config/
 .config/*
