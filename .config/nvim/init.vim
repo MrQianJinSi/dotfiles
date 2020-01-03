@@ -50,6 +50,9 @@ Plug 'sickill/vim-monokai'
 " lint engine
 " Plug 'w0rp/ale'
 
+" vim-tmux navigator
+Plug 'christoomey/vim-tmux-navigator'
+
 " Initialize plugin system
 call plug#end()
 " }}}
@@ -121,12 +124,6 @@ set splitright
 " Split window and keep focus in original window
 nnoremap ss :split<Return><C-w>w
 nnoremap sv :vsplit<Return><C-w>w
-
-" Quicker movement between windows
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sh <C-w>h
-nnoremap sl <C-w>l
 
 " Resize window
 nnoremap s<left> <C-w><
@@ -375,5 +372,17 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
 endif
+" }}}
+
+" vim-tmux-navigator: {{{
+" unify movement between vim splits and tmux panes
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
 " }}}
 " }}}
