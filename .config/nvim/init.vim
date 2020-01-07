@@ -264,8 +264,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -384,5 +384,30 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
+" }}}
+
+" fzf.vim {{{
+" search files
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
+" search buffers
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>h :History<CR>
+" search tags
+nmap <Leader>t :BTags<CR>
+nmap <Leader>T :Tags<CR>
+" search lines
+nmap <Leader>l :BLines<CR>
+nmap <Leader>L :Lines<CR>
+nmap <Leader>' :Marks<CR>
+" search projects
+nmap <Leader>/ :Ag<Space>
+" nmap <Leader>/ :Rg<Space>
+" search helps
+nmap <Leader>H :Helptags!<CR>
+" search commands
+nmap <Leader>C :Commands<CR>
+" search commands history
+nmap <Leader>: :History:<CR>
 " }}}
 " }}}
