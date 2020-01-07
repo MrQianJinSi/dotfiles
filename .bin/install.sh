@@ -38,3 +38,7 @@ i3_related = ('feh', # wallpaper
 
 # system themes
 # lxappreance
+
+# utils
+dev = ( 'silversearcher-ag', # fuzzy searcher
+)
