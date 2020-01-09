@@ -143,7 +143,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 # set default editor for Git and other programs
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
 # set clion shortcut
 # alias clion='/opt/clion-2016.1.1/bin/clion.sh'
@@ -173,3 +173,4 @@ alias unhp='unset all_proxy'
 
 # shortcuts
 alias v=nvim
+alias vim=nvim
