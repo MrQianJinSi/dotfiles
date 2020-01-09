@@ -171,6 +171,9 @@ alias unhp='unset all_proxy'
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# bash completions
+source ~/.bash_completions/poetry.sh
+
 # shortcuts
 alias v=nvim
 alias vim=nvim

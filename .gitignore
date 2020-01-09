@@ -33,3 +33,5 @@
 !.git_conf/
 # 一些脚本文件
 !.bin/
+# bash configs
+!.bash_completions
