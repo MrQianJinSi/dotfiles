@@ -174,6 +174,10 @@ alias unhp='unset all_proxy'
 # bash completions
 source ~/.bash_completions/poetry.sh
 
+# PATHS
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # shortcuts
 alias v=nvim
 alias vim=nvim
