@@ -60,7 +60,7 @@ call plug#end()
 
 " Vim Settings {{{
 " fold
-set foldmethod=manual
+set foldmethod=indent
 autocmd Filetype vim setlocal foldmethod=marker
 " set foldlevel=0
 " show line numbers
