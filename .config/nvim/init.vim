@@ -44,6 +44,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release',
      \ 'do': 'pip install python-language-server
      \ && yarn global add vim-language-server'}
 
+" Snippets
+Plug 'honza/vim-snippets'
+
 " color schemes
 Plug 'flazz/vim-colorschemes'
 Plug 'sickill/vim-monokai'
@@ -142,7 +145,7 @@ set softtabstop=2 " delete how many spaces when stroke backspace
 " set tab width for different filetype
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype python setlocal ts=2 sts=2 sw=2
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 " don't convert tab when edit Makefile
 autocmd FileType make setlocal noexpandtab
