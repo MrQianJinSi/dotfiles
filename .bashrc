@@ -155,11 +155,8 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-# pipenv
-eval "$(pipenv --completion)"
-
 # manage dotfiles
-alias dotm='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # autojump
 [[ -s /home/wangshuang/.autojump/etc/profile.d/autojump.sh ]] && source /home/wangshuang/.autojump/etc/profile.d/autojump.sh
