@@ -31,10 +31,10 @@ set $base0F #d06060
 #set $base0F #fcc09e
 
 # monitor alias
-set $builtin eDP1
-set $top HDMI1
+set $builtin eDP-1
+set $top HDMI-1
 # set $top DP2
-set $horizonal DP2
+set $horizonal DP-2
 
 set $wallpaper $HOME/.config/i3/star_ships.jpg
 
@@ -206,9 +206,9 @@ bindsym $mod+$Alt+l move workspace to output right
 bindsym $mod+p exec "xrandr --output $top --mode 1280x720 --same-as $builtin"
 #bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 # vertical dual moniter work station 
-bindsym $mod+bracketleft exec "xrandr --output $top --mode 1920x1080 --above $builtin"
+bindsym $mod+bracketleft exec "xrandr --output $builtin --mode 1920x1080 --output $top --mode 1920x1080 --above $builtin"
 # horizonal dual moniter work station 
-bindsym $mod+bracketright exec "xrandr --output $horizonal --mode 1920x1080 --right-of $builtin"
+bindsym $mod+bracketright exec "xrandr --output $builtin --mode 1920x1080 --output $horizonal --mode 1920x1080 --right-of $builtin"
 # triple mointer work station
 #bindsym $mod+quotedbl exec "xrandr --output $builtin --mode 1920x1080 --pos 1080x1200 --rotate normal --output $top --mode 1920x1200 --pos 1080x0 --rotate normal --output DP2 --mode 1920x1080 --pos 0x0 --rotate left"
 # trun off outer screen
