@@ -145,11 +145,6 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # set default editor for Git and other programs
 export VISUAL=nvim
 export EDITOR=$VISUAL
-# set clion shortcut
-# alias clion='/opt/clion-2016.1.1/bin/clion.sh'
-
-# set Hadoop run env
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # pyenv
 export PATH="~/.pyenv/bin:$PATH"
