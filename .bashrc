@@ -145,21 +145,13 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # set default editor for Git and other programs
 export VISUAL=nvim
 export EDITOR=$VISUAL
-# set clion shortcut
-# alias clion='/opt/clion-2016.1.1/bin/clion.sh'
-
-# set Hadoop run env
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # pyenv
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-# pipenv
-eval "$(pipenv --completion)"
-
 # manage dotfiles
-alias dotm='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # autojump
 [[ -s /home/wangshuang/.autojump/etc/profile.d/autojump.sh ]] && source /home/wangshuang/.autojump/etc/profile.d/autojump.sh
