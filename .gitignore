@@ -3,6 +3,7 @@
 # 要加入git的文件列表
 !.gitignore
 # 各类配置文件
+!README.MD
 !.bashrc
 !.wgetrc
 !.gemrc
