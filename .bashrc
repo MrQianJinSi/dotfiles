@@ -166,7 +166,6 @@ alias unhp='unset all_proxy'
 # bash completions
 source ~/.bash_completions/poetry.sh
 
-# PATHS
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -181,3 +180,6 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 # github login
 ssh-add ~/.ssh/id_github &> /dev/null
+
+# local binaries
+export PATH="$HOME/.local/bin:$PATH"
