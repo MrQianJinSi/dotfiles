@@ -173,3 +173,11 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # shortcuts
 alias v=nvim
 alias vim=nvim
+
+# ruby gems
+# Install Ruby Gems to ~/.gems
+export GEM_HOME="$HOME/.gems"
+export PATH="$HOME/.gems/bin:$PATH"
+
+# github login
+ssh-add ~/.ssh/id_github &> /dev/null
