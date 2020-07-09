@@ -44,6 +44,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release',
      \ 'do': 'pip install python-language-server
      \ && yarn global add vim-language-server'}
 
+" json comments support
+Plug 'neoclide/jsonc.vim'
+
 " Snippets
 Plug 'honza/vim-snippets'
 
