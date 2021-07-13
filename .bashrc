@@ -181,5 +181,8 @@ export PATH="$HOME/.gems/bin:$PATH"
 # github login
 ssh-add ~/.ssh/id_github &> /dev/null
 
-# local binaries
-export PATH="$HOME/.local/bin:$PATH"
+# set i3-dmenu-desktop search path
+export XDG_DATA_DIRS="$HOME/Desktop:$XDG_DATA_DIRS"
+
+# load 4G driver
+alias load4g="sudo /usr/sbin/insmod $HOME/repos/xmm7360_ubuntu_20/xmm7360_usb.ko"
