@@ -22,6 +22,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 " use git in vim
 Plug 'tpope/vim-fugitive'
+" surround text object
+Plug 'tpope/vim-surround'
+
+" automatic save vim session
+Plug 'tpope/vim-obsession'
 
 " custom start screen
 Plug 'mhinz/vim-startify'
@@ -35,6 +40,9 @@ Plug 'junegunn/fzf.vim'
 " prerequisite: https://github.com/universal-ctags/ctags
 Plug 'ludovicchabant/vim-gutentags'
 
+" show tags in split
+Plug 'preservim/tagbar'
+
 " show icons along file
 " must install nerdfonts: https://www.nerdfonts.com/font-downloads
 " Plug 'ryanoasis/vim-devicons'
@@ -47,12 +55,18 @@ Plug 'neoclide/coc.nvim', {'branch': 'release',
 " json comments support
 Plug 'neoclide/jsonc.vim'
 
-" Snippets
+" Snippets, works with CocInstall coc-snippets
 Plug 'honza/vim-snippets'
+
+" lint
+Plug 'vim-syntastic/syntastic'
 
 " color schemes
 Plug 'flazz/vim-colorschemes'
 Plug 'sickill/vim-monokai'
+
+" cpp colorschemes
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " lint engine
 " Plug 'w0rp/ale'
@@ -68,7 +82,8 @@ call plug#end()
 " fold
 set foldmethod=indent
 autocmd Filetype vim setlocal foldmethod=marker
-" set foldlevel=0
+" open 5 levels of folds automattically when open file
+set foldlevel=5
 " show line numbers
 set number
 set numberwidth=5
@@ -167,6 +182,12 @@ set tags=./.tags;,.tags
 syntax enable
 colorscheme monokai
 "let g:molokai_original = 1 " use molokai backgound color
+
+" terminal
+tnoremap <Esc> <C-\><C-n>
+
+"termdebug
+packadd termdebug
 " }}}
 
 " Plugin Settings {{{
@@ -187,7 +208,7 @@ nmap <F5> :NERDTreeToggle<CR>
 " }}}
 
 " NERD tree git plugin {{{
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "S",
     \ "Untracked" : "N",
@@ -271,8 +292,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-"xmap <leader>f  <Plug>(coc-format-selected)
-"nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -330,6 +351,28 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" }}}
+
+" syntastic: {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" cpp linter {{{
+let g:syntastic_cpp_checkers = ['clang_tidy']
+let g:syntastic_c_checkers = ['clang_tidy']
+let g:syntastic_cpp_cpplint_exec = 'clang_tidy'
+" }}}
+
+" tagbar {{{
+let g:tagbar_width=35
+let g:tagbar_autofocus=1
+nmap <F6> :TagbarToggle<CR>
 " }}}
 
 " Airline: {{{

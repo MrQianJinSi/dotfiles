@@ -18,7 +18,8 @@
       "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
-        }
+        },
+        "highlight": { "lsRanges" : true }
       }
     },
     "vimls": {
@@ -54,7 +55,7 @@
       ]
     },
     "python": {
-      "command": "python",
+      "command": "/usr/bin/python",
       "args": [
         "-mpyls",
         "-vv",
@@ -103,7 +104,7 @@
               "enabled": true
             },
             "pylint": {
-              "enabled": true,
+              "enabled": false,
               "args": [
                 "--rcfile",
                 "~/.config/pylintrc"
@@ -129,6 +130,21 @@
           }
         }
       }
+    },
+    "cmake": {
+    "command": "cmake-language-server",
+    "filetypes": ["cmake"],
+    "rootPatterns": [
+      "build/"
+    ],
+    "initializationOptions": {
+      "buildDirectory": "build"
     }
+  },
+    "dockerfile": {
+    "command": "docker-langserver",
+    "filetypes": ["dockerfile"],
+    "args": ["--stdio"]
+  }
   }
 }
