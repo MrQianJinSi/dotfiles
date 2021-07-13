@@ -65,13 +65,13 @@ bindsym $mod+Shift+q kill
 
 
 #Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5% #increase sound volume
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5% #decrease sound volume
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 3 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl -q s 5%+ # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl -q s 5%- # decrease screen brightness
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
@@ -203,7 +203,7 @@ bindsym $mod+$Alt+l move workspace to output right
 
 # manage moniters
 # projection mode
-bindsym $mod+p exec "xrandr --output $top --mode 1280x720 --same-as $builtin"
+bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 #bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 # vertical dual moniter work station 
 bindsym $mod+bracketleft exec "xrandr --output $builtin --mode 1920x1080 --output $top --mode 1920x1080 --above $builtin"
@@ -221,13 +221,13 @@ bindsym $mod+backslash exec "xrandr --output $top --off --output $horizonal --of
 assign [class="Gvim"] $workspace2
 assign [class="Google-chrome"] $workspace3
 # WPS Writer
-assign [class="Wps"] $workspace4
+# assign [class="Wps"] $workspace4
 # WPS Presentation
-assign [class="Wpp"] $workspace6
+# assign [class="Wpp"] $workspace6
 # WPS Spreadsheets
-assign [class="Et"] $workspace6
+# assign [class="Et"] $workspace6
 # netease cloud music
-assign [class="netease-cloud-music"] $workspace10
+assign [class="qqmusic"] $workspace10
 
 # window border
 # for_window [class='.*'] border none
@@ -311,17 +311,19 @@ bar {
 # set wallpaper
 exec_always feh --bg-scale $wallpaper
 # seafile client
-exec  --no-startup-id seafile-applet
+# exec  --no-startup-id seafile-applet
+# fcitx daemon
+exec --no-startup-id i3-msg "exec fcitx"
 # network manager
 exec  --no-startup-id nm-applet
 # bluetooth manager
-exec  --no-startup-id blueman-applet
+exec  --no-startup-id blueman-tray
 # google chrome
 exec --no-startup-id i3-msg "exec google-chrome-stable"
 # terminal
 exec --no-startup-id i3-msg "exec i3-sensible-terminal"
 # netease cloud music
-exec --no-startup-id i3-msg "exec netease-cloud-music"
+# exec --no-startup-id i3-msg "exec netease-cloud-music"
 # auto lock screen
 exec xautolock -time 5 -locker "$HOME/.bin/scripts/fuzzy_lock.sh $HOME/.config/i3/lock.png" -notify 30 -notifier "notify-send -u critical -t 10000 'LOCKING screen in 30 seconds'" -detectsleep
 #-killtime 1 -killer 'xset dpms force off'  
@@ -330,9 +332,12 @@ exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 exec_always gsettings set org.nemo.desktop show-desktop-icons false
 
 # Send signal to i3blocks
-bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release XF86AudioMute exec pkill -SIGRTMIN+10 i3blocks
+# bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
+# bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+#bindsym --release XF86AudioMute exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 #bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
