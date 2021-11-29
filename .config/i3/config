@@ -206,7 +206,7 @@ bindsym $mod+$Alt+l move workspace to output right
 bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 #bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 # vertical dual moniter work station 
-bindsym $mod+bracketleft exec "xrandr --output $builtin --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $top --mode 2560x1440 --pos 1920x0 --rotate left"
+bindsym $mod+bracketleft exec "xrandr --output $builtin --primary --mode 1920x1080 --pos 0x1480 --rotate normal --output $top --mode 2560x1440 --pos 1920x0 --rotate left"
 # horizonal dual moniter work station 
 bindsym $mod+bracketright exec "xrandr --output $builtin --mode 1920x1080 --output $horizonal --mode 1920x1080 --right-of $builtin"
 # triple mointer work station
