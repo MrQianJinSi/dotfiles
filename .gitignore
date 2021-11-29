@@ -36,3 +36,5 @@
 !.bin/
 # bash configs
 !.bash_completions
+# docker config
+!.docker
