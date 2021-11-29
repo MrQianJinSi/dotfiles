@@ -367,6 +367,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_checkers = ['clang_tidy']
 let g:syntastic_c_checkers = ['clang_tidy']
 let g:syntastic_cpp_cpplint_exec = 'clang_tidy'
+let g:syntastic_cpp_clang_tidy_args = "-p"
 " }}}
 
 " tagbar {{{
