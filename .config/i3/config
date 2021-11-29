@@ -128,7 +128,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $od+w layout tabbed
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -206,7 +206,7 @@ bindsym $mod+$Alt+l move workspace to output right
 bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 #bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
 # vertical dual moniter work station 
-bindsym $mod+bracketleft exec "xrandr --output $builtin --mode 1920x1080 --output $top --mode 1920x1080 --above $builtin"
+bindsym $mod+bracketleft exec "xrandr --output $builtin --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $top --mode 2560x1440 --pos 1920x0 --rotate left"
 # horizonal dual moniter work station 
 bindsym $mod+bracketright exec "xrandr --output $builtin --mode 1920x1080 --output $horizonal --mode 1920x1080 --right-of $builtin"
 # triple mointer work station

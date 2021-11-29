@@ -186,3 +186,9 @@ export XDG_DATA_DIRS="$HOME/Desktop:$XDG_DATA_DIRS"
 
 # load 4G driver
 alias load4g="sudo /usr/sbin/insmod $HOME/repos/xmm7360_ubuntu_20/xmm7360_usb.ko"
+alias reload4g="sudo rmmod xmm7360_usb && sudo /usr/sbin/insmod $HOME/repos/xmm7360_ubuntu_20/xmm7360_usb.ko"
+# setup ros envs
+source /opt/ros/noetic/setup.bash
+# setup for ros serial package
+# https://github.com/wjwwood/serial
+# source /tmp/usr/local/setup.bash
