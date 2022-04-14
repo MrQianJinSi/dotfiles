@@ -48,6 +48,13 @@ Plug 'preservim/tagbar'
 " Plug 'ryanoasis/vim-devicons'
 
 " async code completion by language server
+" prerequisite: install followwing language server
+" - yarn global add vim-language-server
+" - npm install -g dockerfile-language-server-nodejs
+" - brew install ccls
+" - :CocInstall coc-pyright
+" - :CocInstall coc-cmake
+" - :CocInstall coc-json
 Plug 'neoclide/coc.nvim', {'branch': 'release',
      \ 'do': 'pip install python-language-server
      \ && yarn global add vim-language-server'}
