@@ -111,10 +111,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # Make some changes for git to enable tab completion
-source ~/.git_conf/git-completion.bash
+source ~/.bin/.git_conf/git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
@@ -123,7 +121,7 @@ purple="\[\033[0;35m\]"
 reset="\[\033[0m\]"
 
 # Change command prompt
-source ~/.git_conf/git-prompt.sh
+source ~/.bin/.git_conf/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
@@ -146,15 +144,11 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export VISUAL=nvim
 export EDITOR=$VISUAL
 
-# pyenv
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 # manage dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # autojump
-[[ -s /home/wangshuang/.autojump/etc/profile.d/autojump.sh ]] && source /home/wangshuang/.autojump/etc/profile.d/autojump.sh
+[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 
 # setup proxy environment
 alias hp='export all_proxy=http://127.0.0.1:1235'
@@ -163,23 +157,9 @@ alias unhp='unset all_proxy'
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# bash completions
-source ~/.bash_completions/poetry.sh
-
-# poetry
-export PATH="$HOME/.poetry/bin:$PATH"
-
 # shortcuts
 alias v=nvim
 alias vim=nvim
-
-# ruby gems
-# Install Ruby Gems to ~/.gems
-export GEM_HOME="$HOME/.gems"
-export PATH="$HOME/.gems/bin:$PATH"
-
-# github login
-ssh-add ~/.ssh/id_github &> /dev/null
 
 # set i3-dmenu-desktop search path
 export XDG_DATA_DIRS="$HOME/Desktop:$XDG_DATA_DIRS"
@@ -187,8 +167,3 @@ export XDG_DATA_DIRS="$HOME/Desktop:$XDG_DATA_DIRS"
 # load 4G driver
 alias load4g="sudo /usr/sbin/insmod $HOME/repos/xmm7360_ubuntu_20/xmm7360_usb.ko"
 alias reload4g="sudo rmmod xmm7360_usb && sudo /usr/sbin/insmod $HOME/repos/xmm7360_ubuntu_20/xmm7360_usb.ko"
-# setup ros envs
-source /opt/ros/noetic/setup.bash
-# setup for ros serial package
-# https://github.com/wjwwood/serial
-# source /tmp/usr/local/setup.bash
