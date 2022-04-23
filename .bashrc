@@ -111,10 +111,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # Make some changes for git to enable tab completion
-source ~/.bin./.git_conf/git-completion.bash
+source ~/.bin/.git_conf/git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
