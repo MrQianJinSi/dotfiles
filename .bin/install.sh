@@ -17,7 +17,8 @@
 #          'xlsx2csv', # .xlsx
 #          'xls2csv', # .xls
 #          'unrar', # .rar
-#          'xsel' # filename copy and paste
+#          'xsel', # filename copy and paste
+#          'autojump' # jump between directory
 #          )
 #
 ## vim style application
@@ -55,6 +56,10 @@
 ## curl https://pyenv.run | bash
 #
 ## thinkpad x1 special keys
+
+# node
+echo "install node"
+curl -sL install-node.vercel.app/lts | bash
 
 # neovim related
 echo "install neovim related packages"
