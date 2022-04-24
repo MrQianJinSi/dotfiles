@@ -51,7 +51,7 @@ Plug 'preservim/tagbar'
 " prerequisite
 " vim: npm install -g vim-language-server
 " python: pip install python-language-server
-" c++: apt install clangd-10
+" c++: build ccls
 " cmake: pip install cmake-language-server
 " dockerfile: npm install -g dockerfile-language-server-nodejs
 " json: :CocInstall coc-json
