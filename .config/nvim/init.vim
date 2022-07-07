@@ -169,6 +169,7 @@ set softtabstop=2 " delete how many spaces when stroke backspace
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
+autocmd Filetype cpp setlocal ts=4 sts=4 sw=4
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 " don't convert tab when edit Makefile
 autocmd FileType make setlocal noexpandtab

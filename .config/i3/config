@@ -31,8 +31,9 @@ set $base0F #d06060
 #set $base0F #fcc09e
 
 # monitor alias
-set $builtin eDP-1
-set $top HDMI-1
+set $left USB-C-0
+set $middle DP-4
+set $right DP-1
 # set $top DP2
 set $horizonal DP-2
 
@@ -186,8 +187,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Toggle between both monitors 
 # (focus output left wraps from the leftmost to the rightmost output)
-bindsym $mod+Tab focus output up
-bindsym $mod+q focus output right
+bindsym $mod+q focus output up
+bindsym $mod+Tab focus output right
 # bindsym $mod+Tab+k focus output up
 # bindsym $mod+Tab+l focus output right
 
@@ -203,16 +204,13 @@ bindsym $mod+$Alt+l move workspace to output right
 
 # manage moniters
 # projection mode
-bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
-#bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $builtin"
-# vertical dual moniter work station 
-bindsym $mod+bracketleft exec "xrandr --output $builtin --primary --mode 1920x1080 --pos 0x1480 --rotate normal --output $top --mode 2560x1440 --pos 1920x0 --rotate left"
-# horizonal dual moniter work station 
-bindsym $mod+bracketright exec "xrandr --output $builtin --mode 1920x1080 --output $horizonal --mode 1920x1080 --right-of $builtin"
+bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $middle"
+# horizonal triple hree moniter work station 
+bindsym $mod+bracketleft exec "xrandr --output $left --mode 1920x1080 --pos 0x0 --rotate normal --output DP-4 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-1 --mode 1920x1080 --pos 3840x0 --rotate normal"
 # triple mointer work station
 #bindsym $mod+quotedbl exec "xrandr --output $builtin --mode 1920x1080 --pos 1080x1200 --rotate normal --output $top --mode 1920x1200 --pos 1080x0 --rotate normal --output DP2 --mode 1920x1080 --pos 0x0 --rotate left"
 # trun off outer screen
-bindsym $mod+backslash exec "xrandr --output $top --off --output $horizonal --off"
+bindsym $mod+backslash exec "xrandr --output $left --off --output $right --off"
 
 # Floating Windows
 #for_window [class="Update-manager"] floating enable
@@ -312,6 +310,7 @@ bar {
 exec_always feh --bg-scale $wallpaper
 # seafile client
 # exec  --no-startup-id seafile-applet
+exec --no-startup-id '/opt/baidu/duguanjia/DuGuanjiaTray' "launch duguanjia"
 # fcitx daemon
 exec --no-startup-id i3-msg "exec fcitx"
 # network manager

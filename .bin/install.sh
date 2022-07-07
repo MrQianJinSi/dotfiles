@@ -29,10 +29,9 @@
 ## i3 related
 #i3_related = ('i3',
 #              'feh', # wallpaper
-#              'xrandr', # command version moniter manager
+#              'x11-xserver-utils', # command version moniter manager
 #              'arandr', # gui moniter manager
-#              'xprop', # get program class name
-#              'xev', # get key name
+#              'x11-utils', # xprop, xev
 #              'i3blocks', # i3 status bar
 #              'scrot', # screenshoot
 #              'pactrl', # system volume control
@@ -40,7 +39,6 @@
 #              'paucontrol', # system voluem setup
 #              'blueman-applet', # bluetooth applet
 #              'nm-applet', # network manager applet
-#              'i3-lock', # screen lock
 #              'xautolock', # auto screenlock
 #)
 #
