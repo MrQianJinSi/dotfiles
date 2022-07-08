@@ -55,6 +55,12 @@
 #
 ## thinkpad x1 special keys
 
+# arc themes
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get install arc-theme
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get install arc-icons
+
 # node
 echo "install node"
 curl -sL install-node.vercel.app/lts | bash
