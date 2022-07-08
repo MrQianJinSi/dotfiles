@@ -61,6 +61,10 @@ sudo apt-get install arc-theme
 sudo add-apt-repository ppa:noobslab/icons
 sudo apt-get install arc-icons
 
+# setup theme
+sudo apt install lxappearance
+
+
 # node
 echo "install node"
 curl -sL install-node.vercel.app/lts | bash

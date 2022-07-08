@@ -146,14 +146,14 @@ bindsym $mod+a focus parent
 
 set $workspace1 "1: terms"
 set $workspace2 "2: dev"
-set $workspace3 "3: web"
-set $workspace4 "4: docs"
-set $workspace5 "5: files"
-set $workspace6 "6: misc"
-set $workspace7 "7: todo"
-set $workspace8 "8: read"
-set $workspace9 "9: chat"
-set $workspace10 "10: Music"
+set $workspace3 "3: web"
+set $workspace4 "4: files"
+set $workspace5 "5: log"
+set $workspace6 "6: bev"
+set $workspace7 "7: 3d"
+set $workspace8 "8: code"
+set $workspace9 "9: todo"
+set $workspace10 "10: misc"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -205,8 +205,10 @@ bindsym $mod+$Alt+l move workspace to output right
 # manage moniters
 # projection mode
 bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $middle"
-# horizonal triple hree moniter work station 
-bindsym $mod+bracketleft exec "xrandr --output $left --mode 1920x1080 --pos 0x0 --rotate normal --output DP-4 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-1 --mode 1920x1080 --pos 3840x0 --rotate normal"
+# horizonal triple moniter work station
+bindsym $mod+bracketleft exec "xrandr --output $left --mode 1920x1080 --pos 0x0 --rotate normal --output $middle --mode 1920x1080 --pos 1920x0 --rotate normal --output $right --mode 1920x1080 --pos 3840x0 --rotate normal"
+# horizonal dual moniter work station
+bindsym $mod+bracketright exec "xrandr --output $left --off --output $middle --mode 1920x1080 --pos 0x0 --rotate normal --output $right --mode 1920x1080 --pos 1920x0 --rotate normal"
 # triple mointer work station
 #bindsym $mod+quotedbl exec "xrandr --output $builtin --mode 1920x1080 --pos 1080x1200 --rotate normal --output $top --mode 1920x1200 --pos 1080x0 --rotate normal --output DP2 --mode 1920x1080 --pos 0x0 --rotate left"
 # trun off outer screen
@@ -216,14 +218,18 @@ bindsym $mod+backslash exec "xrandr --output $left --off --output $right --off"
 #for_window [class="Update-manager"] floating enable
 
 #assign [class="Gnome-terminal"] $workspace1
-assign [class="Gvim"] $workspace2
 assign [class="Google-chrome"] $workspace3
 # WPS Writer
 # assign [class="Wps"] $workspace4
 # WPS Presentation
 # assign [class="Wpp"] $workspace6
-# WPS Spreadsheets
-# assign [class="Et"] $workspace6
+# Files
+assign [class="Nautilus"] $workspace4
+# Log
+assign [class="klogg"] $workspace5
+# Viewer
+assign [class="Main Viewer"] $workspace9
+assign [class="Totem"] $workspace9
 # netease cloud music
 assign [class="qqmusic"] $workspace10
 
@@ -243,7 +249,7 @@ bindsym $mod+Shift+x exec "$HOME/.bin/scripts/fuzzy_lock.sh $HOME/.config/i3/loc
 bindsym Print exec "mkdir -p $HOME/Pictures/Screenshots && scrot -q 100 -e 'mv $f ~/Pictures/Screenshots/'"
 
 # flame shot
-bindsym $mod+Print exec "flameshot gui"
+bindsym $mod+Shift+s exec "flameshot gui"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
