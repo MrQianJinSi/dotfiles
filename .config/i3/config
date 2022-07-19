@@ -146,13 +146,13 @@ bindsym $mod+a focus parent
 
 set $workspace1 "1: terms"
 set $workspace2 "2: dev"
-set $workspace3 "3: web"
-set $workspace4 "4: files"
-set $workspace5 "5: log"
-set $workspace6 "6: bev"
-set $workspace7 "7: 3d"
-set $workspace8 "8: code"
-set $workspace9 "9: todo"
+set $workspace3 "3: web"
+set $workspace4 "4: files"
+set $workspace5 "5: log"
+set $workspace6 "6: bev"
+set $workspace7 "7: 3d"
+set $workspace8 "8: code"
+set $workspace9 "9: read"
 set $workspace10 "10: misc"
 
 # switch to workspace

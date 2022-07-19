@@ -64,6 +64,8 @@ sudo apt-get install arc-icons
 # setup theme
 sudo apt install lxappearance
 
+# font awesome
+sudo apt-get install -y fonts-font-awesome
 
 # node
 echo "install node"
