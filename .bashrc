@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Make some changes for git to enable tab completion
+# git command auto completion
 source ~/.bin/.git_conf/git-completion.bash
 
 # colors!
@@ -125,7 +125,7 @@ blue="\[\033[0;34m\]"
 purple="\[\033[0;35m\]"
 reset="\[\033[0m\]"
 
-# Change command prompt
+# git command prompt
 source ~/.bin/.git_conf/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
@@ -133,38 +133,26 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\W' adds the name of the current directory
 export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
 
-# using less as print man page
-export PAGER=less
-# Set colors for less. Borrowed from https://wiki.archlinux.org/index.php/Color_output_in_console#less .
-export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
-# export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
-export LESS_TERMCAP_md=$'\E[1;31m'     # begin blink
-export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
-export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+# nvidia cuda settings
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-# set default editor for Git and other programs
-export VISUAL=nvim
-export EDITOR=$VISUAL
-
-# manage dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
-
-# autojump
-[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
-
-# setup proxy environment
+# proxy environment
 alias hp='export all_proxy=http://127.0.0.1:1235'
 alias unhp='unset all_proxy'
 
-# fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mrqianjinsi/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mrqianjinsi/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mrqianjinsi/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mrqianjinsi/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
-# shortcuts
-alias v=nvim
-alias vim=nvim
-
-# set i3-dmenu-desktop search path
-export XDG_DATA_DIRS="$HOME/Desktop:$XDG_DATA_DIRS"

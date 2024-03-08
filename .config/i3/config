@@ -31,11 +31,9 @@ set $base0F #d06060
 #set $base0F #fcc09e
 
 # monitor alias
-set $left USB-C-0
-set $middle DP-4
-set $right DP-1
-# set $top DP2
-set $horizonal DP-2
+set $left DP-1
+set $middle eDP-1
+set $right HDMI-1-0
 
 set $wallpaper $HOME/.config/i3/star_ships.jpg
 
@@ -145,13 +143,14 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1: terms"
-set $workspace2 "2: dev"
+set $workspace2 "2: feishu"
 set $workspace3 "3: web"
-set $workspace4 "4: files"
-set $workspace5 "5: log"
-set $workspace6 "6: bev"
-set $workspace7 "7: 3d"
-set $workspace8 "8: code"
+set $workspace4 "4: env"
+set $workspace5 "5: map"
+set $workspace6 "6: any"
+#set $workspace4 "4: files"
+set $workspace7 "7: viz"
+set $workspace8 "8: note"
 set $workspace9 "9: read"
 set $workspace10 "10: misc"
 
@@ -206,9 +205,9 @@ bindsym $mod+$Alt+l move workspace to output right
 # projection mode
 bindsym $mod+p exec "xrandr --output $top --mode 1920x1080 --same-as $middle"
 # horizonal triple moniter work station
-bindsym $mod+bracketleft exec "xrandr --output $left --mode 1920x1080 --pos 0x0 --rotate normal --output $middle --mode 1920x1080 --pos 1920x0 --rotate normal --output $right --mode 1920x1080 --pos 3840x0 --rotate normal"
+bindsym $mod+bracketleft exec "xrandr --output $left --mode 1920x1080 --pos 0x0 --rotate normal --output $middle --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output $right --mode 1920x1080 --pos 3840x0 --rotate normal"
 # horizonal dual moniter work station
-bindsym $mod+bracketright exec "xrandr --output $left --off --output $middle --mode 1920x1080 --pos 0x0 --rotate normal --output $right --mode 1920x1080 --pos 1920x0 --rotate normal"
+bindsym $mod+bracketright exec "xrandr --output $left --off --output $middle --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $right --mode 1920x1080 --pos 1920x0 --rotate normal"
 # triple mointer work station
 #bindsym $mod+quotedbl exec "xrandr --output $builtin --mode 1920x1080 --pos 1080x1200 --rotate normal --output $top --mode 1920x1200 --pos 1080x0 --rotate normal --output DP2 --mode 1920x1080 --pos 0x0 --rotate left"
 # trun off outer screen
@@ -217,21 +216,19 @@ bindsym $mod+backslash exec "xrandr --output $left --off --output $right --off"
 # Floating Windows
 #for_window [class="Update-manager"] floating enable
 
-#assign [class="Gnome-terminal"] $workspace1
+assign [class="dev.warp.Warp"] $workspace1
+assign [class="Bytedance-feishu"] $workspace2
 assign [class="Google-chrome"] $workspace3
 # WPS Writer
 # assign [class="Wps"] $workspace4
 # WPS Presentation
 # assign [class="Wpp"] $workspace6
 # Files
-assign [class="Nautilus"] $workspace4
+#assign [class="Nautilus"] $workspace4
 # Log
-assign [class="klogg"] $workspace5
-# Viewer
-assign [class="Main Viewer"] $workspace9
-assign [class="Totem"] $workspace9
+#assign [class="klogg"] $workspace5
 # netease cloud music
-assign [class="qqmusic"] $workspace10
+#assign [class="qqmusic"] $workspace10
 
 # window border
 # for_window [class='.*'] border none
@@ -316,17 +313,18 @@ bar {
 exec_always feh --bg-scale $wallpaper
 # seafile client
 # exec  --no-startup-id seafile-applet
-exec --no-startup-id '/opt/baidu/duguanjia/DuGuanjiaTray' "launch duguanjia"
 # fcitx daemon
-exec --no-startup-id i3-msg "exec fcitx"
+# exec --no-startup-id i3-msg "exec fcitx"
 # network manager
 exec  --no-startup-id nm-applet
 # bluetooth manager
 exec  --no-startup-id blueman-tray
-# google chrome
+# feishu
+exec --no-startup-id i3-msg "exec bytedance-feishu"
+# google hrome
 exec --no-startup-id i3-msg "exec google-chrome-stable"
-# terminal
-exec --no-startup-id i3-msg "exec i3-sensible-terminal"
+# warp terminal
+exec --no-startup-id i3-msg "exec warp-terminal"
 # netease cloud music
 # exec --no-startup-id i3-msg "exec netease-cloud-music"
 # auto lock screen
@@ -345,4 +343,3 @@ bindsym --release XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- &
 bindsym --release XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 #bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-
